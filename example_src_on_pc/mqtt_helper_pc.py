@@ -69,7 +69,6 @@ class MqttClient(paho.mqtt.client.Client):
         self.device_to_pc_topic = UNIQUE_ID + "/" + suffix2 + "_to_" + suffix1
         self.broker = broker
         self.message_dispatcher = None  # This is set later
-
         self.print_who_am_i()
 
     def print_who_am_i(self):
