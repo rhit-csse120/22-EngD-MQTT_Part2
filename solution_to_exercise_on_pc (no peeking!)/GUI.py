@@ -46,6 +46,23 @@ class Gui:
         self.label = ttk.Label(frame, text="No data yet")
         self.label.grid()
 
+        # Button that sends "quit" message to the Pico.
+        quit_button = ttk.Button(frame, text="Send 'quit' message")
+        quit_button.grid()
+        quit_button["command"] = lambda: self.send_quit_message()
+
+        # Label and Entry for how many times to blink,
+        # and Button that sends message to blink that many times.
+        blink_times_label = ttk.Label(frame, text="Blink N times, enter N")
+        blink_times_label.grid()
+
+        blink_times_entry = ttk.Entry(frame)
+        blink_times_entry.grid()
+
+        blink_times_button = ttk.Button(frame, text="Blink N times")
+        blink_times_button.grid()
+        blink_times_button["command"] = lambda: self.blink_n_times(blink_times_entry)
+
     # Required method (but it can do whatever you want it to do):
     def receive_message(self, message):
         """
@@ -55,6 +72,9 @@ class Gui:
         """
         self.label["text"] = message
 
+        if "20" in message:
+            self.mqtt_client.send_message("restart")
+
     # Helper function for this example:
     def do_button(self, entry: ttk.Entry):
         """
@@ -63,3 +83,14 @@ class Gui:
         """
         message = entry.get()
         self.mqtt_client.send_message(message)
+
+    def send_quit_message(self):
+        self.mqtt_client.send_message("quit")
+
+    def blink_n_times(self, entry_for_times_to_blink):
+        try:
+            n = int(entry_for_times_to_blink.get())
+            self.mqtt_client.send_message(f"blink {n}")
+        except Exception:
+            print("User input error for number of times to blink")
+            pass  # Don't send user input errors

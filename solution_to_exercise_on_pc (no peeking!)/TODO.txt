@@ -1,0 +1,30 @@
+Do these exercises in the EXERCISE folders (leave the EXAMPLE folders as is!)
+Get help as needed!!!
+Do them one by one, in the order listed.
+
+1. Quitting:
+   a. On the PC, add a ttk.Button that,
+      when pressed, sends a "quit" message to the Pico.
+        -- Which of the several files on the PC does this belong in?
+           Check with a reliable teammate before continuing!
+
+   b. On the Pico, stop the Pico's loop when it receives
+      a "quit" message.
+        -- Which of the several files on the Pico does this belong in?
+           Check with a reliable teammate before continuing!
+
+2. Restarting:
+   a. On the PC, when a message with the string "20" in it appears,
+      send a "restart" message to the Pico.
+        -- Which of the several files on the PC does this belong in?
+           Check with a reliable teammate before continuing!
+
+   b. On the Pico, when it receives a "restart" message,
+      restart the numbering of the sent messages.
+        -- Which of the several files on the Pico does this belong in?
+           Check with a reliable teammate before continuing!
+
+3. Blink N times:
+   Arrange so that the GUI user can send how many times to blink,
+   and the Pico blinks however many times it has most recently
+   been told.
