@@ -49,7 +49,7 @@ class Gui:
     # Required method (but it can do whatever you want it to do):
     def receive_message(self, message):
         """
-        This is the specially-named method that the MqttClient will call
+        This is the specially named method that the MqttClient will call
         when the MqttClient receives a message from the Broker.
         In this case, the method puts the given message onto the label.
         """
